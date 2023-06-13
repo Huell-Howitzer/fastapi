@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "source .env && poetry install && poetry run python main.py",
+    "startCommand": "poetry install && poetry run python main.py",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
