@@ -1,5 +1,6 @@
 # Use the base Railway Python image
-FROM railway/python:3.8
+FROM railwayapp/nixpacks
+
 
 # Update package repositories and install libmysqlclient-dev
 RUN apt-get update && \
