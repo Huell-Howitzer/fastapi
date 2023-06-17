@@ -107,7 +107,11 @@ if __name__ == '__main__':
     t = threading.Thread(target=subscribe_to_playback_updates)
     t.start()
 
-    # Run the FastAPI application with Railway's host and port
-    uvicorn.run(app, host='0.0.0.0', port=8000)
+    # Get the host and port from the Railway environment variables
+    host = os.getenv("RAILWAY_HOST", "0.0.0.0")
+    port = int(os.getenv("RAILWAY_PORT", 8000))
+
+    # Run the FastAPI application with the Railway host, port, and debug mode
+    uvicorn.run(app, host=host, port=port, debug=True)
 
 
