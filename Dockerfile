@@ -1,12 +1,11 @@
-# Use the base Railway Python image
-FROM railwayapp/nixpacks
+# Use the official Python base image with the desired version
+FROM python:3.8
 
-
-# Update package repositories and install libmysqlclient-dev
+# Install libmysqlclient-dev package
 RUN apt-get update && \
-    apt-get install -y libmysqlclient-dev
+    apt-get install -y default-libmysqlclient-dev
 
-# Set the working directory
+# Set the working directory in the container
 WORKDIR /app
 
 # Copy your project files to the container
@@ -17,3 +16,4 @@ RUN pip install -r requirements.txt
 
 # Set the entry point command
 CMD ["python", "main.py"]
+
