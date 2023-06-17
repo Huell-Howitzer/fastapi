@@ -23,7 +23,6 @@ DB_PASSWORD = os.getenv("MYSQLPASSWORD")
 DB_NAME = os.getenv("MYSQLDATABASE")
 DB_PORT = os.getenv("MYSQLPORT")
 
-
 # Connect to the database
 db = mysql.connector.connect(
     host=DB_HOST,
@@ -81,6 +80,7 @@ def store_song_data(track):
 
 # Subscribe to playback updates
 def subscribe_to_playback_updates():
+    global last_playback_state  # Declare last_playback_state as a global variable
     while True:
         current_playback_state = sp.current_user_playing_track()
         if current_playback_state is not None and current_playback_state != last_playback_state:
@@ -109,4 +109,3 @@ if __name__ == '__main__':
 
     # Run the FastAPI application
     uvicorn.run(app, host='0.0.0.0', port=8000)
-
