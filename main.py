@@ -107,6 +107,7 @@ if __name__ == '__main__':
     t = threading.Thread(target=subscribe_to_playback_updates)
     t.start()
 
-    # Run the FastAPI application
+    # Run the FastAPI application with Railway's host and port
     uvicorn.run(app, host='0.0.0.0', port=8000)
+
 
